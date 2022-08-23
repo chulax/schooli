@@ -1,0 +1,75 @@
+{% extends 'staff_template/base_template.html' %}
+
+{% block page_title %}
+    Update Profile
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+    <div class="col-log-8 border border-success p-4 m-4 ms-auto">
+    {%for i in question %}
+    {{i.question}} <br>
+    <form>
+        <div class="radio">
+            <label>
+                <input type="radio" id="option1" name="name" value="{{i.option_one}}"> {{i.option_one}}
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" id="option2" name="name" value="{{i.option_two}}"> {{i.option_two}}
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" id="option3" name="name" value="{{i.option_three}}"> {{i.option_three}}
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" id="option4" name="name" value="{{i.option_four}}"> {{i.option_four}}
+            </label>
+        </div>
+    </form>
+    {%endfor%}
+           <div class="form-group">
+          <button class="btn btn-success" id="save_ans">submit</button>
+        </div>
+        <div class="paginator">
+            <div class="form-group">
+                {% if question.has_next %}
+                <a href="?page={{question.next_page_number }}"><button class="btn form-control btn-primary" id="submiteanswer">next</button></a>
+                  {%else%}
+                  <a href="/start_result"><button class="btn form-control btn-primary" id="submiteanswer">submit</button></a>
+                 {% endif %} 
+                </div>
+        </div>
+    </div>
+    {% endblock main_content %}
+    {% block custom_js %}
+
+    <script>
+    console.log('chere')
+     window.onload = initall;
+     var saveAnsButton;
+    function initall(){
+       saveAnsButton = document.getElementById('save_ans')
+       saveAnsButton.onclick = saveans
+    }
+    function saveans(){
+       var ans = $("input:radio[name=name]:checked").val()
+       alert("answer is sumited")
+       var req = new XMLHttpRequest();
+        //url = window.location.href
+        const  url = 'saveans?ans'+ans
+       req.open("GET",url.true)
+       console.log(req)
+       req.send()
+    }
+
+    </script>
+
+
+    {% endblock custom_js %}
+

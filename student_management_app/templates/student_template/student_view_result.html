@@ -1,0 +1,181 @@
+{% extends 'student_template/base_template.html' %}
+
+{% block page_title %}
+    Result
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script>
+        const ap="A+";
+        const a="A";
+        const am="A-";
+        const bp="B+";
+        const b="B";
+        const bm="B-";
+        const cp="C+";
+        const c="C";
+        const cm="C-";
+        const dp="D+";
+        const d="D";
+        const dm="D-";
+        const f="F";
+  jQuery('document').ready(function(){
+    $table1=jQuery('#table_row_total');
+    $table1.find('thead tr').append('<th>Grade</th>');
+    $table1.find('tbody tr').each(function(){
+      var sum=0;
+      jQuery(this).find('td').each(function(){
+        if(!isNaN(Number(jQuery(this).text()))){
+          sum=sum+Number(jQuery(this).text());
+        }
+      });
+      if(sum>=95){
+      jQuery(this).append('<td>'+ap+'</td>');
+      }
+     else if(sum>=90){
+      jQuery(this).append('<td>'+a+'</td>');
+      }
+      else if(sum>=85){
+      jQuery(this).append('<td>'+am+'</td>');
+      }
+      else if(sum>=80){
+      jQuery(this).append('<td>'+bp+'</td>');
+      }
+      else if(sum>=75){
+      jQuery(this).append('<td>'+b+'</td>');
+      }
+      else if(sum>=72){
+      jQuery(this).append('<td>'+bm+'</td>');
+      }
+      else if(sum>=69){
+      jQuery(this).append('<td>'+cp+'</td>');
+      }
+      else if(sum>=65){
+      jQuery(this).append('<td>'+c+'</td>');
+      }
+      else if(sum>=61){
+      jQuery(this).append('<td>'+cm+'</td>');
+      }
+      else if(sum>=57){
+      jQuery(this).append('<td>'+dp+'</td>');
+      }
+      else if(sum>=54){
+      jQuery(this).append('<td>'+d+'</td>');
+      }
+      else if(sum>=50){
+      jQuery(this).append('<td>'+dm+'</td>');
+      }
+      else{
+        jQuery(this).append('<td>'+f+'</td>');
+      }
+    });
+
+  });
+</script>
+
+<script>
+  const pass = "Pass";
+  const fail = "Fail";
+  jQuery('document').ready(function(){
+    $table1=jQuery('#table_row_total');
+    $table1.find('thead tr').append('<th>Stutes</th>');
+    $table1.find('tbody tr').each(function(){
+      var sum=0;
+      jQuery(this).find('td').each(function(){
+        if(!isNaN(Number(jQuery(this).text()))){
+          sum=sum+Number(jQuery(this).text());
+        }
+      });
+      if(sum>=50){
+        jQuery(this).append('<td >'+'<span class="alert alert-success">'+pass+'</span>'+'</td>');
+      }
+      else{
+        jQuery(this).append('<td>'+'<span class="alert alert-danger">'+fail+'</span>'+'</td>');
+      }
+      
+    });
+
+  });
+</script>
+<script>
+  
+  jQuery('document').ready(function(){
+    $table1=jQuery('#table_row_total');
+    $table1.find('thead tr').append('<th>Total</th>');
+    $table1.find('tbody tr').each(function(){
+      var sum=0;
+      jQuery(this).find('td').each(function(){
+        if(!isNaN(Number(jQuery(this).text()))){
+          sum=sum+Number(jQuery(this).text());
+        }
+      });
+      
+        jQuery(this).append('<td >'+sum+'</td>');
+    
+    });
+
+  });
+</script>
+
+<section class="content">
+        <div class="container-fluid">
+
+            
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Result</h3>
+                        </div>
+
+                        <div class="card-body">
+                           <div class="table-responsive">
+                                <table class="table" id="table_row_total">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        
+                                        <th>Subject</th>
+                                        <th>Assignments Marks</th>
+                                        <th>Exam Marks</th>
+                                        <th>Mid Exam Marks</th>
+                                    
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for row in student_result %}
+                                    <tr>
+
+                                        <td>{{ row.subject_id.subject_name }}</td>
+                                        <td>{{ row.subject_assignment_marks }}</td>
+                                        <td>{{ row.subject_exam_marks }}</td>
+                                        <td>{{ row.subject_mid_exam_marks }}</td>
+                                      
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+  {% endblock main_content %}
+
+{% block custom_js %}
+
+{% endblock custom_js %}

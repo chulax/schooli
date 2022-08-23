@@ -1,0 +1,85 @@
+{% extends 'staff_template/base_template.html' %}
+
+{% block page_title %}
+    Update Profile
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Update Profile</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" method="POST" action="{% url 'staff_add_result3' %}">
+                        {% csrf_token %}
+
+            
+                            
+
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Username </label>
+                                <input type="text" class="form-control" name="qus">
+                            </div>
+
+                            
+
+                            <div class="form-group">
+                                <label>First Name </label>
+                                <input type="text" class="form-control" name="ans">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name </label>
+                                <input type="text" class="form-control" name="opp1" >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name </label>
+                                <input type="text" class="form-control" name="opp2" >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name </label>
+                                <input type="text" class="form-control" name="opp3" >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name </label>
+                                <input type="text" class="form-control" name="opp4" >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name </label>
+                                <input type="text" class="form-control" name="course" >
+                            </div>
+
+
+
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </div>
+                    </form>
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+  {% endblock main_content %}
